@@ -6,6 +6,7 @@ import org.launchcode.models.Location;
 import org.launchcode.models.PositionType;
 import org.launchcode.models.data.JobData;
 
+import javax.swing.text.Position;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
@@ -23,14 +24,31 @@ public class JobForm {
     private int employerId;
 
     /*
-        TODO #3 - Included other fields needed to create a job,
+        TODO #3 - Include other fields needed to create a job,
         with correct validation attributes and display names.
         Don't forget to add getters and setters
      */
 
+    @NotNull
+    private int locationId;
+
+    @NotNull
+    private int coreCompetencyId;
+
+    @NotNull
+    private int positionTypeId;
+
+
+
     private ArrayList<Employer> employers;
+
+
     private ArrayList<Location> locations;
+
+
     private ArrayList<CoreCompetency> coreCompetencies;
+
+
     private ArrayList<PositionType> positionTypes;
 
     public JobForm() {
@@ -42,7 +60,36 @@ public class JobForm {
         */
 
         employers = jobData.getEmployers().findAll();
+        locations = jobData.getLocations().findAll();
+        coreCompetencies = jobData.getCoreCompetencies().findAll();
+        positionTypes = jobData.getPositionTypes().findAll();
 
+    }
+
+
+
+    public int getLocationId() {
+        return locationId;
+    }
+
+    public void setLocation(int location) {
+        this.locationId = location;
+    }
+
+    public int getCoreCompetencyId() {
+        return coreCompetencyId;
+    }
+
+    public void setCoreCompetency(int coreCompetency) {
+        this.coreCompetencyId = coreCompetencyId;
+    }
+
+    public int getPositionTypeId() {
+        return positionTypeId;
+    }
+
+    public void setPositionType(int positionTypeId) {
+        this.positionTypeId = positionTypeId;
     }
 
     public String getName() {
