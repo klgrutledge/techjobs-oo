@@ -43,7 +43,7 @@ public class JobController {
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String add(Model model, @ModelAttribute @Valid JobForm jobForm, Errors errors) {
+    public String add(Model model, @Valid JobForm jobForm, Errors errors) {
 
         // TODO #6 - Validate the JobForm model, and if valid, create a
         // new Job and add it to the jobData data store. Then
@@ -57,17 +57,14 @@ public class JobController {
 
         String name = jobForm.getName();
 
-        int newEmployer = jobForm.getEmployerId();
-        Employer newEmployerObject = jobData.getEmployers().findById(newEmployer);
 
-        int newLocation = jobForm.getLocationId();
-        Location newLocationObject = jobData.getLocations().findById(newLocation);
+        Employer newEmployerObject = jobData.getEmployers().findById(jobForm.getEmployerId());
 
-        int newPositionType = jobForm.getPositionTypeId();
-        PositionType newPositionTypeObject = jobData.getPositionTypes().findById(newPositionType);
+        Location newLocationObject = jobData.getLocations().findById(jobForm.getLocationId());
 
-        int newCoreCompetency = jobForm.getCoreCompetencyId();
-        CoreCompetency newCoreCompetencyObject = jobData.getCoreCompetencies().findById(newCoreCompetency);
+        PositionType newPositionTypeObject = jobData.getPositionTypes().findById(jobForm.getPositionTypeId());
+
+        CoreCompetency newCoreCompetencyObject = jobData.getCoreCompetencies().findById(jobForm.getCoreCompetencyId());
 
 
         Job newJob = new Job(name, newEmployerObject,newLocationObject, newPositionTypeObject, newCoreCompetencyObject);
@@ -78,7 +75,7 @@ public class JobController {
         jobData.add(newJob);
 
 
-        return "redirect:?id= " + jobForm.getEmployerId(); //add id here
+        return "redirect:.?id= " + newJob.getId(); //add id here
 
         }
     }
