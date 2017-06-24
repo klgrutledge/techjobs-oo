@@ -57,7 +57,6 @@ public class JobController {
 
         String name = jobForm.getName();
 
-
         Employer newEmployerObject = jobData.getEmployers().findById(jobForm.getEmployerId());
 
         Location newLocationObject = jobData.getLocations().findById(jobForm.getLocationId());
