@@ -111,7 +111,7 @@ public class JobForm {
         return coreCompetencyId;
     }
 
-    public void setCoreCompetencyId(int coreCompetency) {
+    public void setCoreCompetencyId(int coreCompetencyId) {
         this.coreCompetencyId = coreCompetencyId;
     }
 
